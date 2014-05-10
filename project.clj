@@ -1,4 +1,4 @@
-(defproject lein-plantuml "1.0.0-SNAPSHOT"
+(defproject lein-plantuml "0.1.0-SNAPSHOT"
   :description "A Leiningen plugin for generating UML diagrams using PluntUML."
   :url "https://github.com/vbauer/lein-plantuml"
   :license {:name "Eclipse Public License"
@@ -7,5 +7,11 @@
   :dependencies [[net.sourceforge.plantuml/plantuml "7997"]
                  [clj-glob "1.0.0"]]
 
+  :plugins [[lein-release "1.0.5"]]
+
   :eval-in-leiningen true
-  :pedantic? :abort)
+  :pedantic? :abort
+
+  :local-repo-classpath true
+  :lein-release {:deploy-via :clojars
+                 :scm :git})

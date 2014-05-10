@@ -1,7 +1,7 @@
 lein-plantuml
 =============
 
-A Leiningen plugin for generating UML diagrams using PluntUML
+A Leiningen plugin for generating UML diagrams using PluntUML.
 
 Pre-requirements
 ================
@@ -58,10 +58,13 @@ Example configuration:
 Usage
 =====
 
-Run:
+To generate UML image files in the corresponding directories using configuration section from project.clj use:
 
 ```
 lein plantuml
 ```
 
-This will generate UML image files in the corresponding directories.
+You could also use command-line parameters to define configuration:
+```
+lein plantuml "resources/*.puml" png
+```

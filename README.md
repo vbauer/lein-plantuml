@@ -3,6 +3,20 @@ lein-plantuml
 
 A Leiningen plugin for generating UML diagrams using PluntUML
 
+Pre-requirements
+================
+
+Install [Graphviz](http://www.graphviz.org) to use lein-plantuml plugin.
+
+On Ubuntu:
+```
+sudo port install graphviz
+```
+On Mac OS X:
+```
+brew install graphviz
+```
+
 Installation
 ============
 

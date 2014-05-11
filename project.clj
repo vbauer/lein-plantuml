@@ -7,7 +7,8 @@
   :dependencies [[net.sourceforge.plantuml/plantuml "7997"]
                  [clj-glob "1.0.0"]]
 
-  :plugins [[lein-release "1.0.5"]]
+  :plugins [[lein-release "1.0.5"]
+            [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]]
 
   :eval-in-leiningen true
   :pedantic? :abort

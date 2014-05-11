@@ -23,11 +23,25 @@
    :pdf FileFormat/PDF})
 
 
-; Internal API
+; Internal API: Configurations
 
 (defn- abs-file [fname]
   (if fname
-    (io/file (.getAbsolutePath (io/file fname)))))
+    (doto
+      (io/file (.getAbsolutePath (io/file fname)))
+      (.mkdirs))))
+
+(defn- file-format [k]
+  (let [fmt (if (instance? String k) (keyword k) k)]
+    (fmt FILE_FORMAT)))
+
+(defn- generate-sources [project argv]
+  (let [sources (or (:plantuml project) [])
+       args [(vec argv)]]
+    (remove empty? (concat sources args))))
+
+
+; Internal API: Renderer
 
 (defn- create-reader [input output fformat]
   (let [in (abs-file input)
@@ -43,10 +57,6 @@
     (doseq [image (.getGeneratedImages reader)]
       (println (str image " " (.getDescription image))))))
 
-(defn- file-format [k]
-  (let [fmt (if (instance? String k) (keyword k) k)]
-    (fmt FILE_FORMAT)))
-
 (defn- process-config [config]
   (let [inputs (glob/glob (nth config 0))
         fmt (file-format (nth config 1 :png))
@@ -57,11 +67,21 @@
 
 ; External API
 
-(defn plantuml [project & argv]
-  (let [plantuml (or (:plantuml project) [])
-        args (if argv (vec argv) [])
-        even1arg (>= 1 (count args))
-        configs (if even1arg plantuml (conj plantuml args))]
-    (doseq [config configs]
-      (process-config config))))
+(defn plantuml
+  "Generate UML diagrams using PluntUML.
 
+  Available file formats:
+    - xmi, xmi:argo, xmi:start - XML Metadata Interchange format
+    - eps, eps:txt - Encapsulated PostScript format
+    - svg - Scalable Vector Graphics format
+    - text, utext - Text file format
+    - png - Portable Network Graphics format
+    - pdf - Portable Document Format
+
+  Usage:
+    lein plantuml <source folder> [<file format>] [<output folder>]"
+
+  [project & args]
+  (let [configs (generate-sources project args)]
+    (doseq [conf configs]
+      (process-config conf))))

@@ -36,8 +36,8 @@ To configure PluntUML generator you need to setup :plantuml option as a list of 
 ["glob pattern" <file format> <output directory>]
 
 Description:
-- Glob pattern - it is a pattern based on wildcard characters. See [Glob](http://en.wikipedia.org/wiki/Glob_(programming)) for more details.
-- File format - it is a image file format (optional parameter).
+- Glob pattern - it is a pattern based on wildcard characters for input files. See [Glob](http://en.wikipedia.org/wiki/Glob_(programming)) for more details.
+- Files format - it is a image file format for output data (optional parameter).
 - Output directory - is an optional parameter, files will be generated in the same directory by default.
 
 File formats:
@@ -66,5 +66,5 @@ lein plantuml
 
 You could also use command-line parameters to define configuration:
 ```
-lein plantuml "resources/*.puml" png
+lein plantuml "resources/*.puml" png "target/resources"
 ```

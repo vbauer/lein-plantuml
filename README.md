@@ -25,7 +25,7 @@ Include the following plugin in your project.clj file or your global profile:
 ```clojure
 (defproject your-project-here "version"
  ...
- :plugins [[lein-plantuml "0.1.0"]]
+ :plugins [[lein-plantuml "0.1.1"]]
  ...)
 ```
 

@@ -1,7 +1,8 @@
 lein-plantuml
 =============
 
-A Leiningen plugin for generating UML diagrams using PluntUML.
+A Leiningen plugin for generating UML diagrams using [PluntUML](http://plantuml.sourceforge.net).
+
 
 Pre-requirements
 ================
@@ -17,23 +18,21 @@ On Mac OS X:
 brew install graphviz
 ```
 
+
 Installation
 ============
 
-Include the following plugin in your project.clj file or your global profile:
+To enable lein-plantuml for your project, put the following in the :plugins vector of your project.clj file:
 
-```clojure
-(defproject your-project-here "version"
- ...
- :plugins [[lein-plantuml "0.1.1"]]
- ...)
-```
+![latest-version](https://clojars.org/lein-plantuml/latest-version.svg)
+
+[![Dependencies Status](http://jarkeeper.com/vbauer/lein-plantuml/status.png)](http://jarkeeper.com/vbauer/lein-plantuml)
 
 Configuration
 =============
 
 To configure PluntUML generator you need to setup :plantuml option as a list of triplets:
-["glob pattern" <file format> <output directory>]
+"glob pattern" ["file format"] ["output directory"]
 
 Description:
 - Glob pattern - it is a pattern based on wildcard characters for input files. See [Glob](http://en.wikipedia.org/wiki/Glob_(programming)) for more details.
@@ -55,6 +54,7 @@ Example configuration:
              ["presentation/*.txt" :svg]]
 ```
 
+
 Usage
 =====
 
@@ -68,3 +68,32 @@ You could also use command-line parameters to define configuration:
 ```
 lein plantuml "resources/*.puml" png "target/resources"
 ```
+
+NB: To test plugin, put file "test.puml" in folder "resources":
+```
+@startuml
+
+User -> (Start)
+User --> (Use the application) : A small label
+
+:Main Admin: ---> (Use the application) : This is\nyet another\nlabel
+
+@enduml
+```
+
+More examples could be found here:
+- [Sequence Diagram](http://plantuml.sourceforge.net/sequence.html)
+- [Use Case Diagram](http://plantuml.sourceforge.net/usecase.html)
+- [Class Diagram](http://plantuml.sourceforge.net/classes.html)
+- [Activity Diagram](http://plantuml.sourceforge.net/activity.html) + [(more)](http://plantuml.sourceforge.net/activity2.html)
+- [Component Diagram](http://plantuml.sourceforge.net/component.html)
+- [State Diagram](http://plantuml.sourceforge.net/state.html)
+- [Object Diagram](http://plantuml.sourceforge.net/objects.html)
+
+
+License
+=======
+
+Copyright © 2014 Vladislav Bauer
+
+Distributed under the Eclipse Public License, the same as Clojure.

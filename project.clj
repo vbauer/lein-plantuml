@@ -5,10 +5,11 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[net.sourceforge.plantuml/plantuml "7997"]
-                 [clj-glob "1.0.0"]]
+                 [clj-glob "1.0.0" :exclusions [org.clojure/clojure]]]
 
-  :plugins [[lein-release "1.0.5"]
-            [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]]
+  :plugins [[lein-release "1.0.5" :exclusions [org.clojure/clojure]]
+            [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]
+            [lein-bikeshed "0.1.7" :exclusions [org.clojure/clojure]]]
 
   :eval-in-leiningen true
   :pedantic? :abort

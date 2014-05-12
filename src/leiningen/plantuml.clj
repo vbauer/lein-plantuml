@@ -1,4 +1,5 @@
-(ns leiningen.plantuml
+(ns ^{:author "Vladislav Bauer"}
+  leiningen.plantuml
   (:import (net.sourceforge.plantuml.preproc Defines)
            (net.sourceforge.plantuml FileFormat
                                      SourceFileReader

@@ -66,7 +66,7 @@
       (process-file input output fmt))))
 
 
-; External API
+; External API: Leiningen tasks
 
 (defn plantuml
   "Generate UML diagrams using PluntUML.

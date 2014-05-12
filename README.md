@@ -70,7 +70,11 @@ You could also use command-line parameters to define configuration:
 lein plantuml "resources/*.puml" png "target/resources"
 ```
 
-NB: To test plugin, put file "test.puml" in folder "resources":
+
+Example
+=======
+
+To test plugin you can create simple file and run lein-plantuml:
 ```
 @startuml
 
@@ -81,6 +85,9 @@ User --> (Use the application) : A small label
 
 @enduml
 ```
+Output UML diagram should look like this:
+
+![uml-example](http://plantuml.sourceforge.net/imgp/usecase_003.png)
 
 More examples could be found here:
 - [Sequence Diagram](http://plantuml.sourceforge.net/sequence.html)

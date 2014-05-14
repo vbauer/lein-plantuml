@@ -5,7 +5,8 @@
                                      SourceFileReader
                                      FileFormatOption
                                      Option))
-  (:require [clojure.java.io :as io]
+  (:require [leiningen.core.main :as main]
+            [clojure.java.io :as io]
             [org.satta.glob :as glob]))
 
 
@@ -58,12 +59,19 @@
     (doseq [image (.getGeneratedImages reader)]
       (println (str image " " (.getDescription image))))))
 
-(defn- process-config [config]
-  (let [inputs (glob/glob (nth config 0))
-        fmt (file-format (nth config 1 :png))
-        output (nth config 2 nil)]
-    (doseq [input inputs]
-      (process-file input output fmt))))
+(defn- proc [config]
+  (try
+    (let [inputs (glob/glob (nth config 0))
+          fmt (file-format (nth config 1 :png))
+          output (nth config 2 nil)]
+      (doseq [input inputs]
+        (process-file input output fmt)))
+    (catch Throwable t
+      (println
+       (joine (str "Can't execute PlanUML: " (.getMessage t))
+              "Check that graphviz is installed."
+              "Additional information: https://github.com/vbauer/lein-platnuml"))
+      (main/abort))))
 
 
 ; External API: Leiningen tasks
@@ -85,4 +93,4 @@
   [project & args]
   (let [configs (generate-sources project args)]
     (doseq [conf configs]
-      (process-config conf))))
+      (proc conf))))

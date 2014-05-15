@@ -11,7 +11,7 @@ Install [Graphviz](http://www.graphviz.org) to use lein-plantuml plugin.
 
 On Ubuntu:
 ```
-sudo port install graphviz
+sudo apt-get install graphviz
 ```
 On Mac OS X:
 ```

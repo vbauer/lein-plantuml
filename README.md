@@ -65,6 +65,11 @@ To generate UML image files in the corresponding directories using configuration
 lein plantuml
 ```
 
+To enable this plugin at compile stage, use the following hook:
+```clojure
+:hooks [leiningen.plantuml]
+```
+
 
 Example
 =======

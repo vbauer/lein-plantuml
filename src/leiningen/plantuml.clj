@@ -2,8 +2,10 @@
   leiningen.plantuml
   (:import (net.sourceforge.plantuml.preproc Defines)
            (net.sourceforge.plantuml FileFormat
-                                     SourceFileReader
                                      FileFormatOption
+                                     GeneratedImage
+                                     ISourceFileReader
+                                     SourceFileReader
                                      Option))
   (:require [leiningen.core.main :as main]
             [leiningen.compile]
@@ -54,7 +56,15 @@
 
 ; Internal API: Renderer
 
-(defn- create-reader [input output fformat]
+(defn- error [msg]
+  (println
+   (joine
+    (str "Can't execute PlanUML: " msg)
+    "Check that graphviz is installed."
+    "Additional information: https://github.com/vbauer/lein-platnuml"))
+  (main/abort))
+
+(defn- ^ISourceFileReader create-reader [input output fformat]
   (let [in (abs-file input)
         out (abs-file output)
         defines (Defines.)
@@ -64,8 +74,9 @@
     (SourceFileReader. defines in out config charset fmt)))
 
 (defn- process-file [in out fmt]
-  (let [reader (create-reader in out fmt)]
-    (doseq [image (.getGeneratedImages reader)]
+  (let [reader (create-reader in out fmt)
+        images (.getGeneratedImages reader)]
+    (doseq [^GeneratedImage image images]
       (println (str image " " (.getDescription image))))))
 
 (defn- process-config [config]
@@ -76,11 +87,7 @@
       (doseq [input inputs]
         (process-file input output fmt)))
     (catch Throwable t
-      (println
-       (joine (str "Can't execute PlanUML: " (.getMessage t))
-              "Check that graphviz is installed."
-              "Additional information: https://github.com/vbauer/lein-platnuml"))
-      (main/abort))))
+      (error (.getMessage t)))))
 
 (defn- proc [project & args]
   (let [configs (generate-sources project)]

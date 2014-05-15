@@ -13,6 +13,7 @@
 
   :eval-in-leiningen true
   :pedantic? :abort
+  :global-vars {*warn-on-reflection* true}
 
   :local-repo-classpath true
   :lein-release {:deploy-via :clojars

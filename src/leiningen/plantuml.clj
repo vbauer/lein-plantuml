@@ -6,11 +6,20 @@
                                      FileFormatOption
                                      Option))
   (:require [leiningen.core.main :as main]
+            [leiningen.compile]
+            [robert.hooke :as hooke]
             [clojure.java.io :as io]
-            [org.satta.glob :as glob]))
+            [org.satta.glob :as glob]
+            [clojure.string :as string]))
 
 
-; States
+; Internal API: Common
+
+(defn joine [& data]
+  (string/join "\r\n" data))
+
+
+; Internal API: States
 
 (def ^:private FILE_FORMAT
   {:xmi FileFormat/XMI_STANDARD
@@ -37,10 +46,10 @@
   (let [fmt (if (instance? String k) (keyword k) k)]
     (fmt FILE_FORMAT)))
 
-(defn- generate-sources [project argv]
-  (let [sources (or (:plantuml project) [])
-       args [(vec argv)]]
-    (remove empty? (concat sources args))))
+(defn- generate-sources [project & args]
+  (let [includes (or (:plantuml project) [])
+        sources (concat includes (vec args))]
+    (remove empty? sources)))
 
 
 ; Internal API: Renderer
@@ -59,7 +68,7 @@
     (doseq [image (.getGeneratedImages reader)]
       (println (str image " " (.getDescription image))))))
 
-(defn- proc [config]
+(defn- process-config [config]
   (try
     (let [inputs (glob/glob (nth config 0))
           fmt (file-format (nth config 1 :png))
@@ -72,6 +81,11 @@
               "Check that graphviz is installed."
               "Additional information: https://github.com/vbauer/lein-platnuml"))
       (main/abort))))
+
+(defn- proc [project & args]
+  (let [configs (generate-sources project)]
+    (doseq [conf configs]
+      (process-config conf))))
 
 
 ; External API: Leiningen tasks
@@ -91,6 +105,14 @@
     lein plantuml <source folder> [<file format>] [<output folder>]"
 
   [project & args]
-  (let [configs (generate-sources project args)]
-    (doseq [conf configs]
-      (proc conf))))
+  (proc project args))
+
+
+; External API: Leiningen hooks
+
+(defn gen-hook [f & args]
+  (apply f args)
+  (proc (first args)))
+
+(defn activate []
+  (hooke/add-hook #'leiningen.compile/compile #'gen-hook))

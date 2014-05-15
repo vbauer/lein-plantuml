@@ -65,11 +65,6 @@ To generate UML image files in the corresponding directories using configuration
 lein plantuml
 ```
 
-You could also use command-line parameters to define configuration:
-```
-lein plantuml "resources/*.puml" png "target/resources"
-```
-
 
 Example
 =======

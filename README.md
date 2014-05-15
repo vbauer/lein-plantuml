@@ -32,13 +32,13 @@ To enable lein-plantuml for your project, put the following in the :plugins vect
 Configuration
 =============
 
-To configure PluntUML generator you need to setup :plantuml option as a list of triplets:
+To configure PluntUML generator, you need to setup :plantuml option as a list of triplets:
 "glob pattern" ["file format"] ["output directory"]
 
 Description:
-- Glob pattern - it is a pattern based on wildcard characters for input files. See [Glob](http://en.wikipedia.org/wiki/Glob_(programming)) for more details.
-- Files format - it is a image file format for output data (optional parameter).
-- Output directory - is an optional parameter, files will be generated in the same directory by default.
+- *Glob pattern* is based on wildcard characters, see [Glob](http://en.wikipedia.org/wiki/Glob_(programming)) for additional information.
+- *Files format* is a image file format for output data (optional parameter).
+- *Output directory* is an optional parameter, files will be generated in the same directory by default.
 
 File formats:
 - :xmi, :xmi:argo, :xmi:start - XML Metadata Interchange format
@@ -59,7 +59,7 @@ Example configuration:
 Usage
 =====
 
-To generate UML image files in the corresponding directories using configuration section from project.clj use:
+To generate UML image files using configuration from project.clj, you should use use:
 
 ```
 lein plantuml
@@ -74,7 +74,7 @@ To enable this plugin at compile stage, use the following hook:
 Example
 =======
 
-To test plugin you can create simple file and run lein-plantuml:
+To test the plugin, you can create a simple file and run lein-plantuml:
 ```
 @startuml
 

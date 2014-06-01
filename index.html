@@ -1,0 +1,157 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>lein-plantuml by vbauer</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/vbauer/lein-plantuml">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/vbauer/lein-plantuml/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/vbauer/lein-plantuml/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>lein-plantuml</h1>
+          <p>A Leiningen plugin for generating UML diagrams using PluntUML</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/vbauer">vbauer</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="https://twitter.com/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h1>
+<a name="lein-plantuml" class="anchor" href="#lein-plantuml"><span class="octicon octicon-link"></span></a>lein-plantuml</h1>
+
+<p>A Leiningen plugin for generating UML diagrams using <a href="http://plantuml.sourceforge.net">PluntUML</a>.</p>
+
+<h1>
+<a name="pre-requirements" class="anchor" href="#pre-requirements"><span class="octicon octicon-link"></span></a>Pre-requirements</h1>
+
+<p>Install <a href="http://www.graphviz.org">Graphviz</a> to use lein-plantuml plugin.</p>
+
+<p>On Ubuntu:</p>
+
+<pre><code>sudo apt-get install graphviz
+</code></pre>
+
+<p>On Mac OS X:</p>
+
+<pre><code>brew install graphviz
+</code></pre>
+
+<h1>
+<a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
+
+<p>To enable lein-plantuml for your project, put the following in the :plugins vector of your project.clj file:</p>
+
+<p><img src="https://clojars.org/lein-plantuml/latest-version.svg" alt="latest-version"></p>
+
+<p><a href="https://travis-ci.org/vbauer/lein-plantuml"><img src="https://travis-ci.org/vbauer/lein-plantuml.svg?branch=master" alt="Build Status"></a>
+<a href="http://jarkeeper.com/vbauer/lein-plantuml"><img src="http://jarkeeper.com/vbauer/lein-plantuml/status.png" alt="Dependencies Status"></a></p>
+
+<h1>
+<a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h1>
+
+<p>To configure PluntUML generator, you need to setup :plantuml option as a list of triplets:
+"glob pattern" ["file format"] ["output directory"]</p>
+
+<p>Description:</p>
+
+<ul>
+<li>
+<em>Glob pattern</em> is based on wildcard characters, see <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob</a> for additional information.</li>
+<li>
+<em>Files format</em> is a image file format for output data (optional parameter).</li>
+<li>
+<em>Output directory</em> is an optional parameter, files will be generated in the same directory by default.</li>
+</ul><p>File formats:</p>
+
+<ul>
+<li>:xmi, :xmi:argo, :xmi:start - XML Metadata Interchange format</li>
+<li>:eps, :eps:txt - Encapsulated PostScript format</li>
+<li>:svg - Scalable Vector Graphics format</li>
+<li>:text, :utext - Text file format</li>
+<li>:png - Portable Network Graphics format</li>
+<li>:pdf - Portable Document Format</li>
+</ul><p>Example configuration:</p>
+
+<div class="highlight highlight-clojure"><pre>  <span class="ss">:plantuml</span> <span class="p">[[</span><span class="s">"resources/*.puml"</span> <span class="ss">:png</span> <span class="s">"target"</span><span class="p">]</span>
+             <span class="p">[</span><span class="s">"presentation/*.txt"</span> <span class="ss">:svg</span><span class="p">]]</span>
+</pre></div>
+
+<h1>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
+
+<p>To generate UML image files using configuration from project.clj, you should use use:</p>
+
+<pre><code>lein plantuml
+</code></pre>
+
+<p>To enable this plugin at compile stage, use the following hook:</p>
+
+<div class="highlight highlight-clojure"><pre><span class="ss">:hooks</span> <span class="p">[</span><span class="nv">leiningen.plantuml</span><span class="p">]</span>
+</pre></div>
+
+<h1>
+<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h1>
+
+<p>To test the plugin, you can create a simple file and run lein-plantuml:</p>
+
+<pre><code>@startuml
+
+User -&gt; (Start)
+User --&gt; (Use the application) : A small label
+
+:Main Admin: ---&gt; (Use the application) : This is\nyet another\nlabel
+
+@enduml
+</code></pre>
+
+<p>Output UML diagram should look like this:</p>
+
+<p><img src="http://plantuml.sourceforge.net/imgp/usecase_003.png" alt="uml-example"></p>
+
+<p>More examples could be found here:</p>
+
+<ul>
+<li><a href="http://plantuml.sourceforge.net/sequence.html">Sequence Diagram</a></li>
+<li><a href="http://plantuml.sourceforge.net/usecase.html">Use Case Diagram</a></li>
+<li><a href="http://plantuml.sourceforge.net/classes.html">Class Diagram</a></li>
+<li>
+<a href="http://plantuml.sourceforge.net/activity.html">Activity Diagram</a> + <a href="http://plantuml.sourceforge.net/activity2.html">(more)</a>
+</li>
+<li><a href="http://plantuml.sourceforge.net/component.html">Component Diagram</a></li>
+<li><a href="http://plantuml.sourceforge.net/state.html">State Diagram</a></li>
+<li><a href="http://plantuml.sourceforge.net/objects.html">Object Diagram</a></li>
+</ul><h1>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
+
+<p>Copyright © 2014 Vladislav Bauer</p>
+
+<p>Distributed under the Eclipse Public License, the same as Clojure.</p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>

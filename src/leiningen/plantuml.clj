@@ -118,8 +118,9 @@
 ; External API: Leiningen hooks
 
 (defn gen-hook [f & args]
-  (apply f args)
-  (proc (first args)))
+  (let [res (apply f args)]
+    (proc (first args))
+    res))
 
 (defn activate []
   (hooke/add-hook #'leiningen.compile/compile #'gen-hook))

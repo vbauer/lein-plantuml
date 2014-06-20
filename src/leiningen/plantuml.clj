@@ -24,14 +24,9 @@
 ; Internal API: States
 
 (def ^:private FILE_FORMAT
-  {:xmi FileFormat/XMI_STANDARD
-   :xmi:argo FileFormat/XMI_ARGO
-   :xmi:start FileFormat/XMI_STAR
-   :eps FileFormat/EPS
+  {:eps FileFormat/EPS
    :eps:txt FileFormat/EPS_TEXT
    :svg FileFormat/SVG
-   :txt FileFormat/ATXT
-   :utxt FileFormat/UTXT
    :png FileFormat/PNG
    :pdf FileFormat/PDF})
 
@@ -101,10 +96,8 @@
   "Generate UML diagrams using PluntUML.
 
   Available file formats:
-    - xmi, xmi:argo, xmi:start - XML Metadata Interchange format
-    - eps, eps:txt - Encapsulated PostScript format
+    - eps - Encapsulated PostScript format
     - svg - Scalable Vector Graphics format
-    - text, utext - Text file format
     - png - Portable Network Graphics format
     - pdf - Portable Document Format
 

@@ -41,10 +41,8 @@ Description:
 - *Output directory* is an optional parameter, files will be generated in the same directory by default.
 
 File formats:
-- :xmi, :xmi:argo, :xmi:start - XML Metadata Interchange format
-- :eps, :eps:txt - Encapsulated PostScript format
+- :eps - Encapsulated PostScript format
 - :svg - Scalable Vector Graphics format
-- :text, :utext - Text file format
 - :png - Portable Network Graphics format
 - :pdf - Portable Document Format
 

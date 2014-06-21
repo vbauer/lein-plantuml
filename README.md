@@ -1,7 +1,7 @@
 lein-plantuml
 =============
 
-A Leiningen plugin for generating UML diagrams using [PluntUML](http://plantuml.sourceforge.net).
+A Leiningen plugin for generating UML diagrams using [PlantUML](http://plantuml.sourceforge.net).
 
 
 Pre-requirements
@@ -32,7 +32,7 @@ To enable lein-plantuml for your project, put the following in the :plugins vect
 Configuration
 =============
 
-To configure PluntUML generator, you need to setup :plantuml option as a list of triplets:
+To configure PlantUML generator, you need to setup :plantuml option as a list of triplets:
 "glob pattern" ["file format"] ["output directory"]
 
 Description:

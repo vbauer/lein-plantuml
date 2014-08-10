@@ -103,3 +103,10 @@ License
 Copyright © 2014 Vladislav Bauer
 
 Distributed under the Eclipse Public License, the same as Clojure.
+
+
+Might also like
+===============
+
+* [lein-jshint](https://github.com/vbauer/lein-jshint) - a Leiningen plugin for running javascript code through JSHint
+* [lein-jslint](https://github.com/vbauer/lein-jslint) - a Leiningen plugin for running javascript code through JSLint

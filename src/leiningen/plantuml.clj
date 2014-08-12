@@ -20,6 +20,14 @@
 (defn joine [& data]
   (string/join "\r\n" data))
 
+(defn- error [fmt & args]
+  (println
+   (joine
+    (str "Can't execute PlanUML: " (apply format fmt args))
+    "Check that graphviz is installed."
+    "Additional information: https://github.com/vbauer/lein-platnuml"))
+  (main/abort))
+
 
 ; Internal API: States
 
@@ -28,7 +36,9 @@
    :eps:txt FileFormat/EPS_TEXT
    :svg FileFormat/SVG
    :png FileFormat/PNG
-   :pdf FileFormat/PDF})
+   :pdf FileFormat/PDF
+   :txt FileFormat/ATXT
+   :utxt FileFormat/UTXT})
 
 
 ; Internal API: Configurations
@@ -40,8 +50,11 @@
       (.mkdirs))))
 
 (defn- file-format [k]
-  (let [fmt (if (instance? String k) (keyword k) k)]
-    (fmt FILE_FORMAT)))
+  (let [fmt (if (instance? String k) (keyword k) k)
+        f (fmt FILE_FORMAT)]
+    (if (nil? f)
+      (error "Bad file format: %s" k)
+      f)))
 
 (defn- generate-sources [project & args]
   (let [includes (or (:plantuml project) [])
@@ -50,14 +63,6 @@
 
 
 ; Internal API: Renderer
-
-(defn- error [msg]
-  (println
-   (joine
-    (str "Can't execute PlanUML: " msg)
-    "Check that graphviz is installed."
-    "Additional information: https://github.com/vbauer/lein-platnuml"))
-  (main/abort))
 
 (defn- ^ISourceFileReader create-reader [input output fformat]
   (let [in (abs-file input)
@@ -100,6 +105,7 @@
     - svg - Scalable Vector Graphics format
     - png - Portable Network Graphics format
     - pdf - Portable Document Format
+    - text, utext - Text file format
 
   Usage:
     lein plantuml <source folder> [<file format>] [<output folder>]"

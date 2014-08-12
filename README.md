@@ -45,6 +45,7 @@ File formats:
 - :svg - Scalable Vector Graphics format
 - :png - Portable Network Graphics format
 - :pdf - Portable Document Format
+- :text, :utext - Text file format
 
 Example configuration:
 

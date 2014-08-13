@@ -10,11 +10,11 @@ Pre-requirements
 Install [Graphviz](http://www.graphviz.org) to use lein-plantuml plugin.
 
 On Ubuntu:
-```
+```bash
 sudo apt-get install graphviz
 ```
 On Mac OS X:
-```
+```bash
 brew install graphviz
 ```
 
@@ -37,7 +37,7 @@ To configure PlantUML generator, you need to setup :plantuml option as a list of
 
 Description:
 - *Glob pattern* is based on wildcard characters, see [Glob](http://en.wikipedia.org/wiki/Glob_(programming)) for additional information.
-- *Files format* is a image file format for output data (optional parameter).
+- *Files format* is a image file format for output data (optional parameter, default value is :png).
 - *Output directory* is an optional parameter, files will be generated in the same directory by default.
 
 File formats:
@@ -58,9 +58,9 @@ Example configuration:
 Usage
 =====
 
-To generate UML image files using configuration from project.clj, you should use use:
+To generate UML image files using configuration from project.clj, you should use:
 
-```
+```bash
 lein plantuml
 ```
 
@@ -68,6 +68,12 @@ To enable this plugin at compile stage, use the following hook:
 ```clojure
 :hooks [leiningen.plantuml]
 ```
+
+To run PlantUML generator using command line interface without configuration in project.clj file, you need to use following command:
+```bash
+lein plantuml <source folder> [<file format>] [<output folder>]
+```
+By default, generator will use PNG output format and input directory for output files.
 
 
 Example

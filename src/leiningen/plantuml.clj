@@ -105,7 +105,7 @@
     - svg - Scalable Vector Graphics format
     - png - Portable Network Graphics format
     - pdf - Portable Document Format
-    - text, utext - Text file format
+    - txt, utxt - Text file format
 
   Usage:
     lein plantuml <source folder> [<file format>] [<output folder>]"

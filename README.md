@@ -47,7 +47,7 @@ To configure PlantUML generator, you need to setup :plantuml option as a list of
 
 Description:
 - *Glob pattern* is based on wildcard characters, see [Glob](http://en.wikipedia.org/wiki/Glob_(programming)) for additional information.
-- *Files format* is a image file format for output data (optional parameter, default value is :png).
+- *Files format* is an image file format for output data (optional parameter, default value is :png). You could use both variants (keywords and text values) to configure file format.
 - *Output directory* is an optional parameter, files will be generated in the same directory by default.
 
 File formats:
@@ -55,13 +55,13 @@ File formats:
 - :svg - Scalable Vector Graphics format
 - :png - Portable Network Graphics format
 - :pdf - Portable Document Format
-- :text, :utext - Text file format
+- :txt, :utxt - Text file format
 
 Example configuration:
 
 ```clojure
   :plantuml [["resources/*.puml" :png "target"]
-             ["presentation/*.txt" :svg]]
+             ["presentation/*.txt" "svg"]]
 ```
 
 
@@ -84,6 +84,11 @@ To run PlantUML generator using command line interface without configuration in 
 lein plantuml <source folder> [<file format>] [<output folder>]
 ```
 By default, generator will use PNG output format and input directory for output files.
+
+To show help for CLI:
+```bash
+ lein help plantuml
+```
 
 
 Example

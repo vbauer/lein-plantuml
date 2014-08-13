@@ -1,13 +1,15 @@
 lein-plantuml
 =============
 
-A Leiningen plugin for generating UML diagrams using [PlantUML](http://plantuml.sourceforge.net).
+[PlantUML](http://plantuml.sourceforge.net) is an open-source tool that uses simple textual descriptions to draw UML diagrams. Diagrams are defined using a simple and intuitive language.
+
+[lein-plantuml](https://github.com/vbauer/lein-plantuml) is a Leiningen plugin for generating UML diagrams using PlantUML.
 
 
 Pre-requirements
 ================
 
-Install [Graphviz](http://www.graphviz.org) to use lein-plantuml plugin.
+Install [Graphviz](http://www.graphviz.org) to use lein-plantuml plugin. PlantUML should be working with any version of GraphViz, starting with 2.26.3
 
 * [Mac OS X](http://www.graphviz.org/Download_macos.php):
 ```bash

@@ -9,14 +9,22 @@ Pre-requirements
 
 Install [Graphviz](http://www.graphviz.org) to use lein-plantuml plugin.
 
-On Ubuntu:
-```bash
-sudo apt-get install graphviz
-```
-On Mac OS X:
+* [Mac OS X](http://www.graphviz.org/Download_macos.php):
 ```bash
 brew install graphviz
 ```
+* [Ubuntu](http://www.graphviz.org/Download_linux_ubuntu.php):
+```bash
+sudo apt-get install graphviz
+```
+* [Fedora](http://www.graphviz.org/Download_linux_fedora.php):
+```bash
+yum list available 'graphviz*'
+yum install 'graphviz*'
+```
+* [RHEL or CentOS](http://www.graphviz.org/Download_linux_rhel.php)
+* [Solaris](http://www.graphviz.org/Download_solaris.php)
+* [Windows](http://www.graphviz.org/Download_windows.php)
 
 
 Installation

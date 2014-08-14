@@ -31,24 +31,39 @@
         <h1>
 <a name="lein-plantuml" class="anchor" href="#lein-plantuml"><span class="octicon octicon-link"></span></a>lein-plantuml</h1>
 
-<p>A Leiningen plugin for generating UML diagrams using <a href="http://plantuml.sourceforge.net">PlantUML</a>.</p>
+<p><a href="http://plantuml.sourceforge.net">PlantUML</a> is an open-source tool that uses simple textual descriptions to draw UML diagrams. Diagrams are defined using a simple and intuitive language.</p>
+
+<p><a href="https://github.com/vbauer/lein-plantuml">lein-plantuml</a> is a Leiningen plugin for generating UML diagrams using PlantUML.</p>
 
 <h1>
 <a name="pre-requirements" class="anchor" href="#pre-requirements"><span class="octicon octicon-link"></span></a>Pre-requirements</h1>
 
-<p>Install <a href="http://www.graphviz.org">Graphviz</a> to use lein-plantuml plugin.</p>
+<p>Install <a href="http://www.graphviz.org">Graphviz</a> to use lein-plantuml plugin. PlantUML should be working with any version of GraphViz, starting with 2.26.3</p>
 
-<p>On Ubuntu:</p>
+<ul>
+<li>
+<a href="http://www.graphviz.org/Download_macos.php">Mac OS X</a>:</li>
+</ul><div class="highlight highlight-bash"><pre>brew install graphviz
+</pre></div>
 
-<pre><code>sudo apt-get install graphviz
-</code></pre>
+<ul>
+<li>
+<a href="http://www.graphviz.org/Download_linux_ubuntu.php">Ubuntu</a>:</li>
+</ul><div class="highlight highlight-bash"><pre>sudo apt-get install graphviz
+</pre></div>
 
-<p>On Mac OS X:</p>
+<ul>
+<li>
+<a href="http://www.graphviz.org/Download_linux_fedora.php">Fedora</a>:</li>
+</ul><div class="highlight highlight-bash"><pre>yum list available <span class="s1">'graphviz*'</span>
+yum install <span class="s1">'graphviz*'</span>
+</pre></div>
 
-<pre><code>brew install graphviz
-</code></pre>
-
-<h1>
+<ul>
+<li><a href="http://www.graphviz.org/Download_linux_rhel.php">RHEL or CentOS</a></li>
+<li><a href="http://www.graphviz.org/Download_solaris.php">Solaris</a></li>
+<li><a href="http://www.graphviz.org/Download_windows.php">Windows</a></li>
+</ul><h1>
 <a name="installation" class="anchor" href="#installation"><span class="octicon octicon-link"></span></a>Installation</h1>
 
 <p>To enable lein-plantuml for your project, put the following in the :plugins vector of your project.clj file:</p>
@@ -70,7 +85,7 @@
 <li>
 <em>Glob pattern</em> is based on wildcard characters, see <a href="http://en.wikipedia.org/wiki/Glob_(programming)">Glob</a> for additional information.</li>
 <li>
-<em>Files format</em> is a image file format for output data (optional parameter).</li>
+<em>Files format</em> is an image file format for output data (optional parameter, default value is :png). You could use both variants (keywords and text values) to configure file format.</li>
 <li>
 <em>Output directory</em> is an optional parameter, files will be generated in the same directory by default.</li>
 </ul><p>File formats:</p>
@@ -80,24 +95,36 @@
 <li>:svg - Scalable Vector Graphics format</li>
 <li>:png - Portable Network Graphics format</li>
 <li>:pdf - Portable Document Format</li>
-<li>:text, :utext - Text file format</li>
+<li>:txt, :utxt - Text file format</li>
 </ul><p>Example configuration:</p>
 
 <div class="highlight highlight-clojure"><pre>  <span class="ss">:plantuml</span> <span class="p">[[</span><span class="s">"resources/*.puml"</span> <span class="ss">:png</span> <span class="s">"target"</span><span class="p">]</span>
-             <span class="p">[</span><span class="s">"presentation/*.txt"</span> <span class="ss">:svg</span><span class="p">]]</span>
+             <span class="p">[</span><span class="s">"presentation/*.txt"</span> <span class="s">"svg"</span><span class="p">]]</span>
 </pre></div>
 
 <h1>
 <a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h1>
 
-<p>To generate UML image files using configuration from project.clj, you should use use:</p>
+<p>To generate UML image files using configuration from project.clj, you should use:</p>
 
-<pre><code>lein plantuml
-</code></pre>
+<div class="highlight highlight-bash"><pre>lein plantuml
+</pre></div>
 
 <p>To enable this plugin at compile stage, use the following hook:</p>
 
 <div class="highlight highlight-clojure"><pre><span class="ss">:hooks</span> <span class="p">[</span><span class="nv">leiningen.plantuml</span><span class="p">]</span>
+</pre></div>
+
+<p>To run PlantUML generator using command line interface without configuration in project.clj file, you need to use following command:</p>
+
+<div class="highlight highlight-bash"><pre>lein plantuml &lt;<span class="nb">source </span>folder&gt; <span class="o">[</span>&lt;file format&gt;<span class="o">]</span> <span class="o">[</span>&lt;output folder&gt;<span class="o">]</span>
+</pre></div>
+
+<p>By default, generator will use PNG output format and input directory for output files.</p>
+
+<p>To show help for CLI:</p>
+
+<div class="highlight highlight-bash"><pre> lein <span class="nb">help </span>plantuml
 </pre></div>
 
 <h1>

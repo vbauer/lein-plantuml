@@ -19,7 +19,7 @@
   :global-vars {*warn-on-reflection* true}
 
   :scm {:name "git"
-        :url "https://github.com/vbauer/lein-plantuml"})
+        :url "https://github.com/vbauer/lein-plantuml"}
 
   :local-repo-classpath true
   :lein-release {:deploy-via :clojars

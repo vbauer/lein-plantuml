@@ -127,6 +127,11 @@ Copyright © 2014 Vladislav Bauer
 Distributed under the Eclipse Public License, the same as Clojure.
 
 
+Thanks to
+=========
+PlantUML developers for the really great project and adding lein-planuml on the [official site](http://plantuml.sourceforge.net/running.html).
+
+
 Might also like
 ===============
 

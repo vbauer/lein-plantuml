@@ -24,7 +24,8 @@
   (println
    (joine
     (str "Can't execute PlanUML: " (apply format fmt args))
-    "Check that graphviz is installed."
+    "Check that graphviz tools is installed correctly."
+    "You can also try to change output format."
     "Additional information: https://github.com/vbauer/lein-platnuml"))
   (main/abort))
 

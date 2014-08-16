@@ -17,20 +17,19 @@
 
 ; Internal API: Common
 
-(defn joine [& data]
-  (string/join "\r\n" data))
+(defn- log [& messages] (println (apply str messages)))
 
-(defn- error [fmt & args]
-  (println
-   (joine
-    (str "Can't execute PlanUML: " (apply format fmt args))
-    "Check that graphviz tools is installed correctly."
-    "You can also try to change output format."
-    "Additional information: https://github.com/vbauer/lein-platnuml"))
-  (main/abort))
+(defn- abs-file [fname]
+  (if fname
+    (doto
+      (io/file (.getAbsolutePath (io/file fname)))
+      (.mkdirs))))
 
 
-; Internal API: States
+; Internal API: Constants
+
+(def ^:private DEF_SOURCES "src/plantuml/*.puml")
+(def ^:private DEF_FILE_FORMAT :png)
 
 (def ^:private FILE_FORMAT
   {:eps FileFormat/EPS
@@ -39,25 +38,20 @@
    :png FileFormat/PNG
    :pdf FileFormat/PDF
    :txt FileFormat/ATXT
-   :utxt FileFormat/UTXT})
+   :utxt FileFormat/UTXT
+   :html FileFormat/HTML
+   :html5 FileFormat/HTML5})
 
 
 ; Internal API: Configurations
 
-(defn- abs-file [fname]
-  (if fname
-    (doto
-      (io/file (.getAbsolutePath (io/file fname)))
-      (.mkdirs))))
-
 (defn- file-format [k]
-  (let [fmt (if (instance? String k) (keyword k) k)
+  (let [fmt (keyword (name k))
         f (fmt FILE_FORMAT)]
-    (if (nil? f)
-      (error "Bad file format: %s" k)
-      f)))
+    (if (nil? f) (log "Bad file format: " k))
+    f))
 
-(defn- generate-sources [project & args]
+(defn- read-configs [project & args]
   (let [includes (or (:plantuml project) [])
         sources (concat includes (vec args))]
     (remove empty? sources)))
@@ -75,23 +69,23 @@
     (SourceFileReader. defines in out config charset fmt)))
 
 (defn- process-file [in out fmt]
-  (let [reader (create-reader in out fmt)
-        images (.getGeneratedImages reader)]
-    (doseq [^GeneratedImage image images]
-      (println (str image " " (.getDescription image))))))
+  (try
+    (let [reader (create-reader in out fmt)
+          images (.getGeneratedImages reader)]
+      (doseq [^GeneratedImage image images]
+        (log "Processed file: " (.getDescription image))))
+    (catch Throwable t
+      (log "Can not render file " in " with file format " fmt))))
 
 (defn- process-config [config]
-  (try
-    (let [inputs (glob/glob (nth config 0))
-          fmt (file-format (nth config 1 :png))
-          output (nth config 2 nil)]
-      (doseq [input inputs]
-        (process-file input output fmt)))
-    (catch Throwable t
-      (error (.getMessage t)))))
+  (let [inputs (glob/glob (nth config 0 DEF_SOURCES))
+        fmt (file-format (nth config 1 DEF_FILE_FORMAT))
+        output (nth config 2 nil)]
+    (doseq [input inputs]
+      (process-file input output fmt))))
 
 (defn- proc [project & args]
-  (let [configs (generate-sources project)]
+  (let [configs (read-configs project)]
     (doseq [conf configs]
       (process-config conf))))
 
@@ -107,6 +101,8 @@
     - png - Portable Network Graphics format
     - pdf - Portable Document Format
     - txt, utxt - Text file format
+    - html, html5 - HTML documents
+    - mjpeg - MJPEG format
 
   Usage:
     lein plantuml <source folder> [<file format>] [<output folder>]"

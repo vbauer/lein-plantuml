@@ -56,6 +56,8 @@ File formats:
 - :png - Portable Network Graphics format
 - :pdf - Portable Document Format
 - :txt, :utxt - Text file format
+- :html, :html5 - HTML documents
+- :mjpeg - MJPEG format
 
 Example configuration:
 

@@ -121,14 +121,6 @@ More examples could be found here:
 - [Object Diagram](http://plantuml.sourceforge.net/objects.html)
 
 
-License
-=======
-
-Copyright © 2014 Vladislav Bauer
-
-Distributed under the Eclipse Public License, the same as Clojure.
-
-
 Thanks to
 =========
 PlantUML developers for the really great project and adding lein-planuml on the [official site](http://plantuml.sourceforge.net/running.html).
@@ -140,3 +132,11 @@ Might also like
 * [lein-asciidoc](https://github.com/vbauer/lein-asciidoc) - A Leiningen plugin for generating documentation using Asciidoctor.
 * [lein-jshint](https://github.com/vbauer/lein-jshint) - a Leiningen plugin for running javascript code through JSHint.
 * [lein-jslint](https://github.com/vbauer/lein-jslint) - a Leiningen plugin for running javascript code through JSLint.
+
+
+License
+=======
+
+Copyright © 2014 Vladislav Bauer
+
+Distributed under the Eclipse Public License, the same as Clojure.

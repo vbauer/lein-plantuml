@@ -93,8 +93,11 @@ To show help for CLI:
 ```
 
 
-Example
-=======
+Examples
+========
+
+Detailed example
+----------------
 
 To test the plugin, you can create a simple file and run lein-plantuml:
 ```
@@ -110,6 +113,16 @@ User --> (Use the application) : A small label
 Output UML diagram should look like this:
 
 ![uml-example](http://plantuml.sourceforge.net/imgp/usecase_003.png)
+
+
+Example project
+---------------
+
+Just clone current repository and try to play with [example project](https://github.com/vbauer/lein-plantuml/tree/master/example) for better understanding how to use lein-planuml.
+
+
+Useful links
+------------
 
 More examples could be found here:
 - [Sequence Diagram](http://plantuml.sourceforge.net/sequence.html)

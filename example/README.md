@@ -30,7 +30,7 @@ lein plantuml
 Results
 =======
 
-In case of successful completion, you should see something like that in console:
+In case of successful completion, you should see something like this in console:
 
 ```bash
 Processed file: [example-04.puml] (5 entities)

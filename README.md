@@ -78,7 +78,7 @@ lein plantuml
 
 To enable this plugin at compile stage, use the following hook:
 ```clojure
-:hooks [leiningen.plantuml]
+:hooks [lein-plantuml.plugin]
 ```
 
 To run PlantUML generator using command line interface without configuration in project.clj file, you need to use following command:

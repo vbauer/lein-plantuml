@@ -37,6 +37,9 @@
 
 <p><a href="https://github.com/vbauer/lein-plantuml">lein-plantuml</a> is a Leiningen plugin for generating UML diagrams using PlantUML.</p>
 
+<p><a href="https://travis-ci.org/vbauer/lein-plantuml"><img src="https://travis-ci.org/vbauer/lein-plantuml.svg?branch=master" alt="Build Status"></a>
+<a href="http://jarkeeper.com/vbauer/lein-plantuml"><img src="http://jarkeeper.com/vbauer/lein-plantuml/status.png" alt="Dependencies Status"></a></p>
+
 <h1>
 <a name="pre-requirements" class="anchor" href="#pre-requirements"><span class="octicon octicon-link"></span></a>Pre-requirements</h1>
 
@@ -71,9 +74,6 @@ yum install <span class="s1">'graphviz*'</span>
 <p>To enable lein-plantuml for your project, put the following in the :plugins vector of your project.clj file:</p>
 
 <p><img src="https://clojars.org/lein-plantuml/latest-version.svg" alt="latest-version"></p>
-
-<p><a href="https://travis-ci.org/vbauer/lein-plantuml"><img src="https://travis-ci.org/vbauer/lein-plantuml.svg?branch=master" alt="Build Status"></a>
-<a href="http://jarkeeper.com/vbauer/lein-plantuml"><img src="http://jarkeeper.com/vbauer/lein-plantuml/status.png" alt="Dependencies Status"></a></p>
 
 <h1>
 <a name="configuration" class="anchor" href="#configuration"><span class="octicon octicon-link"></span></a>Configuration</h1>
@@ -116,7 +116,7 @@ yum install <span class="s1">'graphviz*'</span>
 
 <p>To enable this plugin at compile stage, use the following hook:</p>
 
-<div class="highlight highlight-clojure"><pre><span class="ss">:hooks</span> <span class="p">[</span><span class="nv">leiningen.plantuml</span><span class="p">]</span>
+<div class="highlight highlight-clojure"><pre><span class="ss">:hooks</span> <span class="p">[</span><span class="nv">lein-plantuml.plugin</span><span class="p">]</span>
 </pre></div>
 
 <p>To run PlantUML generator using command line interface without configuration in project.clj file, you need to use following command:</p>
@@ -132,7 +132,10 @@ yum install <span class="s1">'graphviz*'</span>
 </pre></div>
 
 <h1>
-<a name="example" class="anchor" href="#example"><span class="octicon octicon-link"></span></a>Example</h1>
+<a name="examples" class="anchor" href="#examples"><span class="octicon octicon-link"></span></a>Examples</h1>
+
+<h2>
+<a name="detailed-example" class="anchor" href="#detailed-example"><span class="octicon octicon-link"></span></a>Detailed example</h2>
 
 <p>To test the plugin, you can create a simple file and run lein-plantuml:</p>
 
@@ -149,6 +152,14 @@ User --&gt; (Use the application) : A small label
 <p>Output UML diagram should look like this:</p>
 
 <p><img src="http://plantuml.sourceforge.net/imgp/usecase_003.png" alt="uml-example"></p>
+
+<h2>
+<a name="example-project" class="anchor" href="#example-project"><span class="octicon octicon-link"></span></a>Example project</h2>
+
+<p>Just clone current repository and try to play with <a href="https://github.com/vbauer/lein-plantuml/tree/master/example">example project</a> for better understanding how to use lein-planuml.</p>
+
+<h2>
+<a name="useful-links" class="anchor" href="#useful-links"><span class="octicon octicon-link"></span></a>Useful links</h2>
 
 <p>More examples could be found here:</p>
 
@@ -177,6 +188,8 @@ User --&gt; (Use the application) : A small label
 <a href="https://github.com/vbauer/lein-jshint">lein-jshint</a> - a Leiningen plugin for running javascript code through JSHint.</li>
 <li>
 <a href="https://github.com/vbauer/lein-jslint">lein-jslint</a> - a Leiningen plugin for running javascript code through JSLint.</li>
+<li>
+<a href="https://github.com/vbauer/lein-coffeescript">lein-coffeescript</a> - a Leiningen plugin for running CoffeeScript compiler.</li>
 </ul><h1>
 <a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h1>
 

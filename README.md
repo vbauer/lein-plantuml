@@ -135,6 +135,16 @@ More examples could be found here:
 - [Object Diagram](http://plantuml.sourceforge.net/objects.html)
 
 
+Unit testing
+============
+
+To run unit tests:
+
+```bash
+lein with-profile dev midje
+```
+
+
 Thanks to
 =========
 PlantUML developers for the really great project and adding lein-planuml on the [official site](http://plantuml.sourceforge.net/running.html).

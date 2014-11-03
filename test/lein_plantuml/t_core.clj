@@ -5,7 +5,10 @@
         [midje.util :only [testable-privates]])
   (:require [lein-plantuml.core]))
 
-(testable-privates lein-plantuml.core file-format)
+(testable-privates
+  lein-plantuml.core
+    file-format
+    read-configs)
 
 
 (fact "Check available file formats"
@@ -19,3 +22,11 @@
   (file-format :utxt) => FileFormat/UTXT
   (file-format :html) => FileFormat/HTML
   (file-format :html5) => FileFormat/HTML5)
+
+(fact "Check source list"
+  (empty? (read-configs {})) => true
+  (empty? (read-configs {:plantuml []})) => true
+  (empty? (read-configs {:plantuml ["test.uml"]})) => false
+  (empty? (read-configs {} "test.uml")) => false
+  (empty? (read-configs {} ["test.uml"])) => false
+  (empty? (read-configs {:plantuml ["test.uml"]} ["test.uml"])) => false)

@@ -21,13 +21,15 @@
 (def ^:private FILE_FORMAT
   {:eps FileFormat/EPS
    :eps:txt FileFormat/EPS_TEXT
-   :svg FileFormat/SVG
    :png FileFormat/PNG
-   :pdf FileFormat/PDF
    :txt FileFormat/ATXT
    :utxt FileFormat/UTXT
-   :html FileFormat/HTML
-   :html5 FileFormat/HTML5})
+   ; TODO: The following formats are very unstable:
+   ;:svg FileFormat/SVG
+   ;:pdf FileFormat/PDF
+   ;:html FileFormat/HTML
+   ;:html5 FileFormat/HTML5
+   })
 
 
 ; Internal API: Common
@@ -71,9 +73,11 @@
     (let [reader (create-reader in out fmt)
           images (.getGeneratedImages reader)]
       (doseq [^GeneratedImage image images]
-        (log "Processed file: " (.getDescription image))))
+        (log "Processed file: " (.getDescription image) " format: " fmt))
+      true)
     (catch Throwable t
-      (log "Can not render file " in " with file format " fmt))))
+      (log "Can not render file " in " with file format " fmt)
+      false)))
 
 (defn- process-config [config]
   (let [inputs (glob/glob (nth config 0 DEF_SOURCES))

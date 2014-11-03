@@ -15,7 +15,8 @@
 
   :profiles {
 
-    :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]]
+    :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]
+                         [commons-io "2.4"]]
           :plugins [[lein-midje "3.1.3"]]}
 
     :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]

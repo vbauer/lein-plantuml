@@ -1,11 +1,11 @@
 (ns ^{:author "Vladislav Bauer"}
   lein-plantuml.t-core
-  (:import (net.sourceforge.plantuml FileFormat)
-           (org.apache.commons.io FileUtils FilenameUtils))
+  (:import (net.sourceforge.plantuml FileFormat))
   (:use [midje.sweet]
         [midje.util :only [testable-privates]]
         [clojure.java.io :only [as-file]])
-  (:require [lein-plantuml.core]))
+  (:require [lein-plantuml.core]
+            [me.raynes.fs :as fs]))
 
 
 ; Configurations
@@ -28,7 +28,7 @@
          (every? #(check-process file %) formats)))
   ([u f] (try
            (process-file u DEF_OUTPUT f)
-           (finally (FileUtils/deleteDirectory (as-file DEF_OUTPUT))))))
+           (finally (fs/delete-dir DEF_OUTPUT)))))
 
 
 ; Tests

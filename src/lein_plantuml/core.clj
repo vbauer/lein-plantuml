@@ -34,7 +34,7 @@
 
 ; Internal API: Common
 
-(defn- log [& messages] (println (apply str messages)))
+(defn- log [& messages] (println (string/join messages)))
 
 (defn- abs-file [fname]
   (if fname

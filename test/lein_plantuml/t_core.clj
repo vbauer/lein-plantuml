@@ -1,7 +1,7 @@
 (ns ^{:author "Vladislav Bauer"}
   lein-plantuml.t-core
   (:import (net.sourceforge.plantuml FileFormat))
-  (:use [midje.sweet]
+  (:use [midje.sweet :only [fact]]
         [midje.util :only [testable-privates]]
         [clojure.java.io :only [as-file]])
   (:require [lein-plantuml.core]
@@ -22,13 +22,18 @@
 
 ; Helper functions
 
+(defn- clear-output[]
+  (fs/delete-dir DEF_OUTPUT))
+
 (defn- check-process
   ([u] (let [file (str "example/doc/" u)
              formats (vals (var-get FILE_FORMAT))]
          (every? #(check-process file %) formats)))
   ([u f] (try
-           (process-file u DEF_OUTPUT f)
-           (finally (fs/delete-dir DEF_OUTPUT)))))
+           (do
+             (clear-output)
+             (process-file u DEF_OUTPUT f))
+           (finally (clear-output)))))
 
 
 ; Tests

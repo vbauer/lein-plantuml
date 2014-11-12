@@ -46,8 +46,9 @@
 ; Internal API: Configurations
 
 (defn- file-format [k]
-  (let [fmt (keyword (name k))
-        f (fmt FILE_FORMAT)]
+  (let [fmt (when-not (nil? k)
+              (keyword (string/lower-case (name k))))
+        f (get FILE_FORMAT fmt)]
     (if (nil? f) (log "Bad file format: " k))
     f))
 

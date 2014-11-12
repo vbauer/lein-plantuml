@@ -25,6 +25,13 @@
 (defn- clear-output[]
   (fs/delete-dir DEF_OUTPUT))
 
+(defn- check-formats [& names]
+  (let [formats (distinct (map file-format names))
+        eq (= 1 (count formats))]
+    (if eq
+      (first formats)
+      (throw (Exception. "Incorrect file-format function")))))
+
 (defn- check-process
   ([u] (let [file (str "example/doc/" u)
              formats (vals (var-get FILE_FORMAT))]
@@ -39,18 +46,17 @@
 ; Tests
 
 (fact "Check available file formats"
-  (file-format :none) => nil
-  (file-format "eps") => FileFormat/EPS
-  (file-format :eps) => FileFormat/EPS
-  (file-format :eps:txt) => FileFormat/EPS_TEXT
-  (file-format :png) => FileFormat/PNG
-  (file-format :txt) => FileFormat/ATXT
-  (file-format :utxt) => FileFormat/UTXT
+  (check-formats nil :none)             => nil
+  (check-formats :eps :EPS "eps" "EPS") => FileFormat/EPS
+  (check-formats :eps:txt "eps:txt")    => FileFormat/EPS_TEXT
+  (check-formats :png "png")            => FileFormat/PNG
+  (check-formats :txt "txt")            => FileFormat/ATXT
+  (check-formats :utxt "utxt")          => FileFormat/UTXT
   ; TODO: The following formats are very unstable:
-  ;(file-format :svg) => FileFormat/SVG
-  ;(file-format :pdf) => FileFormat/PDF
-  ;(file-format :html) => FileFormat/HTML
-  ;(file-format :html5) => FileFormat/HTML5
+  ;(check-formats :svg) => FileFormat/SVG
+  ;(check-formats :pdf) => FileFormat/PDF
+  ;(check-formats :html) => FileFormat/HTML
+  ;(check-formats :html5) => FileFormat/HTML5
 )
 
 (fact "Check source list"

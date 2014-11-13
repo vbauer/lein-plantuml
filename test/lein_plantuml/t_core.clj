@@ -60,6 +60,7 @@
 )
 
 (fact "Check source list"
+  (empty? (read-configs nil)) => true
   (empty? (read-configs {})) => true
   (empty? (read-configs {:plantuml []})) => true
   (empty? (read-configs {:plantuml ["test.uml"]})) => false

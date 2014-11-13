@@ -53,7 +53,7 @@
     f))
 
 (defn- read-configs [project & args]
-  (let [includes (or (:plantuml project) [])
+  (let [includes (or (when-not (nil? project) (:plantuml project)) [])
         sources (concat includes (vec args))]
     (remove empty? sources)))
 

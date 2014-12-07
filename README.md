@@ -52,13 +52,16 @@ Description:
 - *Output directory* is an optional parameter, files will be generated in the same directory by default.
 
 File formats:
-- :eps - Encapsulated PostScript format
-- :svg - Scalable Vector Graphics format
 - :png - Portable Network Graphics format
-- :pdf - Portable Document Format
+- :svg - Scalable Vector Graphics format
 - :txt, :utxt - Text file format
+- :eps, :eps:txt - Encapsulated PostScript format
+
+<!---
+- :pdf - Portable Document Format
 - :html, :html5 - HTML documents
 - :mjpeg - MJPEG format
+-->
 
 Example configuration:
 

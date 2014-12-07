@@ -52,8 +52,8 @@
   (check-formats :png "png")            => FileFormat/PNG
   (check-formats :txt "txt")            => FileFormat/ATXT
   (check-formats :utxt "utxt")          => FileFormat/UTXT
+  (check-formats :svg "SVG")            => FileFormat/SVG
   ; TODO: The following formats are very unstable:
-  ;(check-formats :svg) => FileFormat/SVG
   ;(check-formats :pdf) => FileFormat/PDF
   ;(check-formats :html) => FileFormat/HTML
   ;(check-formats :html5) => FileFormat/HTML5

@@ -24,8 +24,8 @@
    :png FileFormat/PNG
    :txt FileFormat/ATXT
    :utxt FileFormat/UTXT
+   :svg FileFormat/SVG
    ; TODO: The following formats are very unstable:
-   ;:svg FileFormat/SVG
    ;:pdf FileFormat/PDF
    ;:html FileFormat/HTML
    ;:html5 FileFormat/HTML5

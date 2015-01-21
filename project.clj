@@ -5,13 +5,13 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.7"]
-                 [net.sourceforge.plantuml/plantuml "8017"]
+                 [net.sourceforge.plantuml/plantuml "8018"]
                  [clj-glob "1.0.0" :exclusions [org.clojure/clojure]]]
 
   :plugins [[jonase/eastwood "0.2.1" :exclusions [org.clojure/clojure]]
             [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]
             [lein-bikeshed "0.2.0" :exclusions [org.clojure/clojure]]
-            [lein-ancient "0.5.5"]]
+            [lein-ancient "0.6.1"]]
 
   :profiles {
 

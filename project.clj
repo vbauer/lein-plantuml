@@ -6,17 +6,13 @@
 
   :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.7"]
                  [net.sourceforge.plantuml/plantuml "8021"]
-                 [clj-glob "1.0.0" :exclusions [org.clojure/clojure]]]
-
-  :plugins [[jonase/eastwood "0.2.1" :exclusions [org.clojure/clojure]]
-            [lein-kibit "0.0.8" :exclusions [org.clojure/clojure]]
-            [lein-bikeshed "0.2.0" :exclusions [org.clojure/clojure]]
-            [lein-ancient "0.6.5"]]
+                 [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
+                 [citizen/os "0.1.0-SNAPSHOT"]]
 
   :profiles {
 
     :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]
-                         [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]]
+                         [joda-time "2.2"]]
           ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
           :plugins [[lein-midje "3.1.1"]]}
 

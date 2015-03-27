@@ -8,8 +8,8 @@
                                      SourceFileReader
                                      Option))
   (:require [leiningen.core.main :as main]
-            [clojure.java.io :as io]
-            [org.satta.glob :as glob]
+            [me.raynes.fs :as fs]
+            [citizen.os :as os]
             [clojure.string :as string]))
 
 
@@ -39,8 +39,13 @@
 (defn- abs-file [fname]
   (if fname
     (doto
-      (io/file (.getAbsolutePath (io/file fname)))
+      (fs/file (.getAbsolutePath (fs/file fname)))
       (.mkdirs))))
+
+(defn- clean-path [p]
+  (if os/windows?
+    (string/replace p "/" "\\")
+    (string/replace p "\\" "/")))
 
 
 ; Internal API: Configurations
@@ -81,7 +86,7 @@
       false)))
 
 (defn- process-config [config]
-  (let [inputs (glob/glob (nth config 0 DEF_SOURCES))
+  (let [inputs (fs/glob (clean-path (nth config 0 DEF_SOURCES)))
         fmt (file-format (nth config 1 DEF_FILE_FORMAT))
         output (nth config 2 nil)]
     (doseq [input inputs]

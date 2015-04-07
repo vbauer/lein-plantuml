@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.7"]
-                 [net.sourceforge.plantuml/plantuml "8021"]
+                 [net.sourceforge.plantuml/plantuml "8022"]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
                  [citizen/os "0.1.0-SNAPSHOT"]]
 

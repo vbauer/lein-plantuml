@@ -9,7 +9,6 @@
                                      Option))
   (:require [leiningen.core.main :as main]
             [me.raynes.fs :as fs]
-            [citizen.os :as os]
             [clojure.string :as string]))
 
 
@@ -43,9 +42,10 @@
       (.mkdirs))))
 
 (defn- clean-path [p]
-  (if os/windows?
-    (string/replace p "/" "\\")
-    (string/replace p "\\" "/")))
+  (if (not (nil? p))
+    (if (.startsWith (System/getProperty "os.name") "Windows")
+      (string/replace p "/" "\\")
+      (string/replace p "\\" "/"))))
 
 
 ; Internal API: Configurations

@@ -4,15 +4,15 @@
   :license {:name "Eclipse Public License"
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
-  :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.7"]
-                 [net.sourceforge.plantuml/plantuml "8022"]
+  :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.8"]
+                 [net.sourceforge.plantuml/plantuml "8025"]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
                  [citizen/os "0.1.0-SNAPSHOT"]]
 
   :profiles {
 
     :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]
-                         [joda-time "2.2"]]
+                         [joda-time "2.8"]]
           ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
           :plugins [[lein-midje "3.1.1"]]}
 

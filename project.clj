@@ -6,8 +6,7 @@
 
   :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.8"]
                  [net.sourceforge.plantuml/plantuml "8025"]
-                 [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]
-                 [citizen/os "0.1.0-SNAPSHOT"]]
+                 [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]]
 
   :profiles {
 

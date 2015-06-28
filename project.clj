@@ -5,13 +5,13 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.8"]
-                 [net.sourceforge.plantuml/plantuml "8025"]
+                 [net.sourceforge.plantuml/plantuml "8026"]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]]
 
   :profiles {
 
     :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]
-                         [joda-time "2.8"]]
+                         [joda-time "2.8.1"]]
           ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
           :plugins [[lein-midje "3.1.1"]]}
 
@@ -23,6 +23,7 @@
                           :scm :git}}
   }
 
+  :checksum :warn
   :pedantic? :abort
   :eval-in-leiningen true
   :local-repo-classpath true)

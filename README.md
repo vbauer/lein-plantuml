@@ -162,7 +162,7 @@ Might also like
 * [lein-coffeescript](https://github.com/vbauer/lein-coffeescript) - a Leiningen plugin for running CoffeeScript compiler.
 * [lein-typescript](https://github.com/vbauer/lein-typescript) - a Leiningen plugin for running TypeScript compiler.
 * [jabberjay](https://github.com/vbauer/jabberjay) - a simple framework for creating Jabber bots.
-
+* [coderwall-clj](https://github.com/vbauer/coderwall-clj) - a tiny CoderWall client for Clojure.
 
 License
 =======

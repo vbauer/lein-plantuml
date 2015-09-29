@@ -5,17 +5,17 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.8"]
-                 [net.sourceforge.plantuml/plantuml "8029"]
+                 [net.sourceforge.plantuml/plantuml "8031"]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]]
 
   :profiles {
 
     :dev {:dependencies [[midje "1.6.3" :exclusions [org.clojure/clojure joda-time]]
-                         [joda-time "2.8.1"]]
+                         [joda-time "2.8.2"]]
           ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
           :plugins [[lein-midje "3.1.1"]]}
 
-    :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]
+    :prod {:plugins [[lein-release "1.1.3" :exclusions [org.clojure/clojure]]]
            :global-vars {*warn-on-reflection* true}
            :scm {:name "git"
                  :url "https://github.com/vbauer/lein-plantuml"}

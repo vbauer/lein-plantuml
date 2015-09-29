@@ -15,7 +15,7 @@
           ; Don't use the latest version: https://github.com/marick/lein-midje/issues/47
           :plugins [[lein-midje "3.1.1"]]}
 
-    :prod {:plugins [[lein-release "1.1.3" :exclusions [org.clojure/clojure]]]
+    :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]
            :global-vars {*warn-on-reflection* true}
            :scm {:name "git"
                  :url "https://github.com/vbauer/lein-plantuml"}

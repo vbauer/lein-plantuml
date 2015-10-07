@@ -5,7 +5,6 @@ before_install:
   - sudo apt-get -qq install graphviz > /dev/null
 script: lein2 with-profile dev midje && lein2 uberjar
 jdk:
-  - openjdk6
   - openjdk7
   - oraclejdk7
   - oraclejdk8

@@ -12,12 +12,12 @@
             [clojure.string :as string]))
 
 
-; Internal API: Constants
+; External API: Constants
 
-(def ^:private DEF_SOURCES "src/plantuml/*.puml")
-(def ^:private DEF_FILE_FORMAT :png)
+(def ^:public DEF_SOURCES "src/plantuml/*.puml")
+(def ^:public DEF_FILE_FORMAT :png)
 
-(def ^:private FILE_FORMAT
+(def ^:public FILE_FORMAT
   {:eps FileFormat/EPS
    :eps:txt FileFormat/EPS_TEXT
    :png FileFormat/PNG
@@ -48,16 +48,16 @@
       (string/replace p "\\" "/"))))
 
 
-; Internal API: Configurations
+; External API: Configurations
 
-(defn- file-format [k]
+(defn file-format [k]
   (let [fmt (when-not (nil? k)
               (keyword (string/lower-case (name k))))
         f (get FILE_FORMAT fmt)]
     (if (nil? f) (log "Bad file format: " k))
     f))
 
-(defn- read-configs [project & args]
+(defn read-configs [project & args]
   (let [includes (or (when-not (nil? project) (:plantuml project)) [])
         sources (concat includes (vec args))]
     (remove empty? sources)))
@@ -74,7 +74,10 @@
         charset nil]
     (SourceFileReader. defines in out config charset fmt)))
 
-(defn- process-file [in out fmt]
+
+; External API: Renderer
+
+(defn process-file [in out fmt]
   (try
     (let [reader (create-reader in out fmt)
           images (.getGeneratedImages reader)]
@@ -85,7 +88,7 @@
       (log "Can not render file " in " with file format " fmt)
       false)))
 
-(defn- process-config [config]
+(defn process-config [config]
   (let [inputs (fs/glob (clean-path (nth config 0 DEF_SOURCES)))
         fmt (file-format (nth config 1 DEF_FILE_FORMAT))
         output (nth config 2 nil)]

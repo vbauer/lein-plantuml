@@ -10,10 +10,6 @@
 
   :profiles {
 
-    :dev {:dependencies [[midje "1.8.2" :exclusions [org.clojure/clojure joda-time]]
-                         [joda-time "2.9.1"]]
-          :plugins [[lein-midje "3.2"]]}
-
     :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]
            :global-vars {*warn-on-reflection* true}
            :scm {:name "git"
@@ -25,4 +21,5 @@
   :checksum :warn
   :pedantic? :abort
   :eval-in-leiningen true
-  :local-repo-classpath true)
+  :local-repo-classpath true
+  :warn-on-reflection false)

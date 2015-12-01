@@ -4,7 +4,7 @@ addons:
     packages:
     - graphviz
 language: clojure
-script: lein with-profile dev midje && lein uberjar
+script: lein do clean, test, uberjar
 jdk:
   - oraclejdk7
   - oraclejdk8

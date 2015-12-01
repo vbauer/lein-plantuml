@@ -1,9 +1,8 @@
 language: clojure
-lein: lein2
 before_install:
   - sudo apt-get -qq update > /dev/null
   - sudo apt-get -qq install graphviz > /dev/null
-script: lein2 with-profile dev midje && lein2 uberjar
+script: lein with-profile dev midje && lein uberjar
 jdk:
   - openjdk7
   - oraclejdk7

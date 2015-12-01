@@ -1,6 +1,6 @@
 (ns ^{:author "Vladislav Bauer"}
   lein-plantuml.plugin
-  (:require [leiningen.compile]
+  (:require [leiningen.compile :as lcomp]
             [lein-plantuml.core :as core]
             [robert.hooke :as hooke]))
 

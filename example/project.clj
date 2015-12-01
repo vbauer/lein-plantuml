@@ -5,7 +5,7 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   ; List of plugins
-  :plugins [[lein-plantuml "0.1.16"]]
+  :plugins [[lein-plantuml "0.1.20-SNAPSHOT"]]
 
   ; List of hooks
   ; It's used for running lein-plantuml during compile phase

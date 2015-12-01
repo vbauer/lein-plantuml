@@ -4,7 +4,7 @@
   (:use [midje.sweet :only [fact]]
         [midje.util :only [testable-privates]]
         [clojure.java.io :only [as-file]])
-  (:require [lein-plantuml.core]
+  (:require [lein-plantuml.core :as core]
             [me.raynes.fs :as fs]))
 
 

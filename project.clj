@@ -1,4 +1,4 @@
-(defproject lein-plantuml "0.1.20-SNAPSHOT"
+(defproject lein-plantuml "0.1.20"
   :description "A Leiningen plugin for generating UML diagrams using PluntUML."
   :url "https://github.com/vbauer/lein-plantuml"
   :license {:name "Eclipse Public License"

@@ -8,16 +8,6 @@
                  [net.sourceforge.plantuml/plantuml "8039"]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]]
 
-  :profiles {
-
-    :prod {:plugins [[lein-release "1.0.6" :exclusions [org.clojure/clojure]]]
-           :global-vars {*warn-on-reflection* true}
-           :scm {:name "git"
-                 :url "https://github.com/vbauer/lein-plantuml"}
-           :lein-release {:deploy-via :clojars
-                          :scm :git}}
-  }
-
   :checksum :warn
   :pedantic? :abort
   :eval-in-leiningen true

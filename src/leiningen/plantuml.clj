@@ -13,13 +13,13 @@
     - svg - Scalable Vector Graphics format
     - png - Portable Network Graphics format
     - txt, utxt - Text file format
-    - mjpeg - MJPEG format
+    - pdf - Portable Document Format
 
   Usage:
     lein plantuml <source folder> [<file format>] [<output folder>]"
 
 ; Unsupported formats:
-;   - pdf - Portable Document Format
+;   - mjpeg - MJPEG format
 ;   - html, html5 - HTML documents
 
   [project & args]

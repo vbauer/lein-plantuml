@@ -45,8 +45,8 @@
   (is (= (check-formats :txt "txt") FileFormat/ATXT))
   (is (= (check-formats :utxt "utxt") FileFormat/UTXT))
   (is (= (check-formats :svg "SVG") FileFormat/SVG))
+  (is (= (check-formats :pdf "PDF") FileFormat/PDF))
   ; TODO: The following formats are very unstable:
-  ;(check-formats :pdf) => FileFormat/PDF
   ;(check-formats :html) => FileFormat/HTML
   ;(check-formats :html5) => FileFormat/HTML5
 )

@@ -12,4 +12,5 @@ checkouts/
 .lein-failures
 .nrepl-port
 *swp
+.DS_Store
 

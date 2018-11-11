@@ -56,9 +56,9 @@ File formats:
 - :svg - Scalable Vector Graphics format
 - :txt, :utxt - Text file format
 - :eps, :eps:txt - Encapsulated PostScript format
+- :pdf - Portable Document Format
 
 <!---
-- :pdf - Portable Document Format
 - :html, :html5 - HTML documents
 - :mjpeg - MJPEG format
 -->

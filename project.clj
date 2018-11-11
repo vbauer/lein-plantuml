@@ -5,7 +5,9 @@
             :url "http://www.eclipse.org/legal/epl-v10.html"}
 
   :dependencies [[org.apache.xmlgraphics/batik-rasterizer "1.10"]
+                 [org.apache.xmlgraphics/fop-pdf-images "2.3" :exclusions [commons-logging]]
                  [net.sourceforge.plantuml/plantuml "8059"]
+                 [commons-io "2.5"]
                  [me.raynes/fs "1.4.6" :exclusions [org.clojure/clojure]]]
 
   :checksum :warn

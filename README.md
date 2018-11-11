@@ -144,7 +144,7 @@ Unit testing
 To run unit tests:
 
 ```bash
-lein with-profile dev midje
+lein test
 ```
 
 

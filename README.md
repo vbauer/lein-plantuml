@@ -6,6 +6,7 @@ lein-plantuml
 [lein-plantuml](https://github.com/vbauer/lein-plantuml) is a Leiningen plugin for generating UML diagrams using PlantUML.
 
 [![Build Status](https://travis-ci.org/vbauer/lein-plantuml.svg?branch=master)](https://travis-ci.org/vbauer/lein-plantuml)
+[![Clojars Project](https://img.shields.io/clojars/v/lein-plantuml.svg)](https://clojars.org/lein-plantuml)
 
 
 Pre-requirements
@@ -36,7 +37,10 @@ Installation
 
 To enable lein-plantuml for your project, put the following in the :plugins vector of your project.clj file:
 
-![latest-version](https://clojars.org/lein-plantuml/latest-version.svg)
+```clojure
+; Use latest version instead of "X.X.X"
+:plugins [[lein-plantuml "X.X.X"]]
+```
 
 
 Configuration
